@@ -19,11 +19,11 @@ class Login extends React.Component {
         }
 
         //don't forget to bind any methods interacting with state to the constructor.
-        this.handleChange = this.handleChange.bind(this)
+        // this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleChange(e) {
+    handleChange = (e) => {
         this.setState({
             //this is a way to use one event handler to control multiple different inputs that modify this.state.  'e' is automatically passed as a parameter on onChange and onSubmit prop functions.
             //Here we are taking the 'name' prop of the input component and using it as the the key inside the this.state object, and modifying the this.state[key] value with the value of the

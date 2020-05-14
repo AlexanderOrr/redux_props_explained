@@ -15,7 +15,21 @@ class ToDoList extends React.Component {
     constructor() {
         super()
         this.state = {
-            toDo: ''
+            toDo: '',
+            toDoList: [
+                {
+                    title: 'test1',
+                    dueDate: 'today'
+                },
+                {
+                    title: 'test2',
+                    dueDate: 'tomorrow'
+                },
+                {
+                    title: 'test3',
+                    dueDate: 'day after next'
+                }
+            ]
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -38,16 +52,20 @@ class ToDoList extends React.Component {
         })
     }
 
+    sayHi() {
+        console.log('fireing to a firebase upload')
+    }
+
     render() {
 
         //this is the Redux to-do list.  Like the methods, when specified in the last line of this file, it gets tacked onto this.props with whatever object key you give it in the return of mapStateToProps
-        let mappedToDos = this.props.toDoList.map(toDo => {
+        let mappedToDos = this.state.toDoList.map(toDo => {
             return (
                 <div key={uniqid()}>
                     {/* here we are passing the string To Do we typed earlier down to the ToDoItem component via props.  As you will se inside the ToDoItem file, 
                         we access this sting via 'this.props.content'
                     */}
-                    <ToDoItem content={toDo} />
+                    <ToDoItem greeting={this.sayHi} title={toDo.title} dueDate={toDo.dueDate} />
                 </div>
             )
         })
@@ -55,6 +73,8 @@ class ToDoList extends React.Component {
             <div>
                 <h3>To Dos</h3>
                 <input type='text' name='toDo' placeholder='Add a to-do here' onChange={this.handleChange} value={this.state.toDo} />
+                
+                
                 <button onClick={this.handleSubmit}>Add To-Do</button>
                 <ol>
                     {/* all static aka non function variables are stored in the render function and before the return.  mappedToDos on line 44 is - at the end of the day - 

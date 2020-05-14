@@ -12,12 +12,12 @@ import '../App.css'
 let App = () => {
     return (
         <div>
-            <Switch>
+            {/* <Switch> */}
                 {/* 'exact' means it is the initial starting route of the app.  In this case we made it the standard '/' endpoint, aka like amazon.com takes you to the homepage. */}
                 <Route exact path='/' component={Login} />
                 {/* the ToDos component lives at the '/todos' endpoint.  Later, when we navigate from the '/' aka login screen to the ToDos screen, you will see this endpoint in use */}
                 <Route path='/todos' component={ToDos} />
-            </Switch>
+            {/* </Switch> */}
         </div>
     )
 }
